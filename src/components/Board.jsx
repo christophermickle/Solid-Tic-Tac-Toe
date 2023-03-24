@@ -2,11 +2,11 @@ import { createSignal } from "solid-js";
 import Tile from "./Tile";
 
 const boardArr = new Array(9).fill("");
+;
 
 function Board() {
   const [currentTurn, setCurrentTurn] = createSignal("X");
-  const [currentBoard, setCurrentBoard] = createSignal(boardArr);
-
+  const [currentBoard, setCurrentBoard] = createSignal(boardArr.map(()=>""));
   const toggleTurn = () => {
     setCurrentTurn(currentTurn() === "X" ? "O" : "X");
   };
@@ -21,13 +21,14 @@ function Board() {
         }}
       >
         <div class='gameboard'>
-          {boardArr.map((_, index) => (
+          {boardArr.map((item, index) => (
             <Tile
               toggleTurn={toggleTurn}
-              boardState={currentBoard}
               currentTurn={currentTurn}
               id={index}
+              boardState={currentBoard}
               boardSetter={setCurrentBoard}
+              data-value={item}
             />
           ))}
         </div>
