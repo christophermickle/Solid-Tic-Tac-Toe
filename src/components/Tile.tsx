@@ -1,6 +1,16 @@
 import { createSignal } from "solid-js";
 
-function Tile(props) {
+
+interface TileProps {
+  toggleTurn:()=>void;
+  currentTurn:()=>string;
+  id:number;
+  boardState:()=>string[];
+  boardSetter:(prevBoard:string[])=>string[];
+  dataValue:string;
+}
+
+function Tile(props:TileProps) {
   const [tileValue, setTileValue] = createSignal("");
   const [tileHover, setTileHover] = createSignal("");
 

@@ -1,5 +1,6 @@
 import { createSignal } from "solid-js";
 import Tile from "./Tile";
+import styles from "./Board.module.css";
 
 const boardArr = new Array(9).fill("");
 ;
@@ -14,11 +15,7 @@ function Board() {
   return (
     <>
       <div
-        style={{
-          display: "grid",
-          placeItems: "center",
-          placeContent: "center",
-        }}
+        class={styles.center}
       >
         <div class='gameboard'>
           {boardArr.map((item, index) => (
@@ -38,3 +35,4 @@ function Board() {
   );
 }
 export default Board;
+
